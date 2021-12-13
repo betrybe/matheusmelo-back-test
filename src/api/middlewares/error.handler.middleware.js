@@ -1,4 +1,4 @@
-const ApiError = require('../errors/api.error');
+const ValidationError = require('../errors/validation.error');
 /**
  * Middleware que trata todos os erros lançados
  * 
@@ -14,7 +14,7 @@ module.exports = (
     response,
     _next,
 ) => {
-    if (error instanceof ApiError) {
+    if (error instanceof ValidationError) {
         return response.status(error.statusCode).json({
             message: error.message,
         });
