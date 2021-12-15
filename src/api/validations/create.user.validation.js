@@ -9,7 +9,7 @@ const schema = Joi.object({
 }).error((error) => error.map((err) => {
     switch (err.code) {
         case 'any.required': case 'string.email':
-            return new ValidationError(400, 'Invalid entries. Try again');
+            return new ValidationError(400, 'Invalid entries. Try again.');
         case 'any.custom':
             return err.local.error;
         default:
@@ -22,6 +22,9 @@ module.exports = async (req, res, next) => {
         abortEarly: true,
         allowUnknown: true,
         stripUnknown: true,
+        errors: {
+            label: false,
+        },
     };
 
     try {
