@@ -9,6 +9,9 @@ let dbConnection;
 
 module.exports = {
     connectToServer(callback) {
+        if (this.getDb() != null) {
+            return callback();
+        }
         client.connect((err, db) => {
             if (err || !db) {
                 return callback(err);

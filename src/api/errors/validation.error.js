@@ -1,6 +1,5 @@
-module.exports = class ValidationError extends Error {
-    constructor(statusCode, ...params) {
-        super(...params);
-        this.statusCode = statusCode;
-    }
+const AppError = require('./app.error');
+
+module.exports = class ValidationError extends AppError {
+
 };
