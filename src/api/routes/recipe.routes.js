@@ -8,4 +8,8 @@ const router = express.Router();
 
 router.post('/', AuthMiddleware, createRecipeValidation, recipeController.create);
 
+router.get('/', recipeController.list);
+
+router.get('/:id', recipeController.show);
+
 module.exports = router;
