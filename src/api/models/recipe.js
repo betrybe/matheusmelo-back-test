@@ -1,3 +1,4 @@
+const { ObjectID } = require('mongodb');
 const connection = require('../db/connection');
 
 let db;
@@ -20,5 +21,12 @@ module.exports = {
             preparation,
             userId,
         });
+    },
+    async findById(id) {
+        const objectId = new ObjectID(id);
+        return collection.findOne({ _id: objectId });
+    },
+    async findAll() {
+        return collection.find({});
     },
 };
