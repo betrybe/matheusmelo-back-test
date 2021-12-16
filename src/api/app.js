@@ -3,6 +3,7 @@ const BodyParser = require('body-parser');
 const errorHandlerMiddleware = require('./middlewares/error.handler.middleware');
 const userRoutes = require('./routes/user.routes');
 const loginRoutes = require('./routes/login.routes');
+const recipeRoutes = require('./routes/recipe.routes');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.get('/', (request, response) => {
 
 app.use('/users', userRoutes);
 app.use('/login', loginRoutes);
+app.use('/recipes', recipeRoutes);
 
 app.use(errorHandlerMiddleware);
 

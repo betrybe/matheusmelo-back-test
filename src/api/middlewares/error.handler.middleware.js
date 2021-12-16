@@ -1,4 +1,4 @@
-const ValidationError = require('../errors/validation.error');
+const AppError = require('../errors/app.error');
 /**
  * Middleware que trata todos os erros lançados
  * 
@@ -14,7 +14,7 @@ module.exports = (
     response,
     _next,
 ) => {
-    if (error instanceof ValidationError) {
+    if (error instanceof AppError) {
         return response.status(error.statusCode).json({
             message: error.message,
         });

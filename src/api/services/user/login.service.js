@@ -14,6 +14,6 @@ exports.execute = async (email, password) => {
     if (user === null || user.password !== password) {
         throw new ValidationError(401, 'Incorrect username or password');
     }
-
-    return jwt.sign({ email }, SECRET_JWT, { expiresIn: '1 days' });
+    // eslint-disable-next-line no-underscore-dangle
+    return jwt.sign({ id: user._id }, SECRET_JWT, { expiresIn: '1 days' });
 };
