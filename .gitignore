@@ -293,3 +293,6 @@ $RECYCLE.BIN/
 
 **/uploads/*
 !**/uploads/ratinho.jpg
+
+# Ignorando o volume do docker usado para desenvolvimento
+databases/*

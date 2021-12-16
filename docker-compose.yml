@@ -1,0 +1,28 @@
+version: "3.9"
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: unless-stopped
+    volumes:
+      - ./databases/mongodb/data:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      - bridge-network
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: unless-stopped
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017
+    depends_on:
+      - mongodb
+    networks:
+      - bridge-network
+networks:
+  bridge-network:
+    driver: "bridge"
+    name: bridge-network
