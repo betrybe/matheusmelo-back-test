@@ -1,5 +1,6 @@
 const createRecipeService = require('../services/recipe/create.recipe.service');
 const findRecipeService = require('../services/recipe/find.recipe.service');
+const deleteRecipeService = require('../services/recipe/delete.recipe.service');
 
 exports.create = async (request, response) => {
     const { name, ingredients, preparation } = request.body;
@@ -23,5 +24,14 @@ exports.show = async (request, response) => {
         return response.status(200).json(recipe);
     } catch (err) {
         return response.status(404).json({ message: 'recipe not found' });
+    }
+};
+
+exports.delete = async (request, response, next) => {
+    try {
+        await deleteRecipeService.execute(request.params.id);
+        return response.status(204).end();
+    } catch (err) {
+        return next(err);
     }
 };

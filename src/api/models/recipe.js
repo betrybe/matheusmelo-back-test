@@ -29,4 +29,8 @@ module.exports = {
     async findAll() {
         return collection.find({});
     },
+    async deleteById(id) {
+        const objectId = new ObjectID(id);
+        return collection.deleteOne({ _id: objectId });
+    },
 };
